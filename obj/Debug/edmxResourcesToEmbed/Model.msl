@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AssessmentservayModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="M_Answer">
+      <EntityTypeMapping TypeName="AssessmentservayModel.M_Answer">
+        <MappingFragment StoreEntitySet="M_Answer">
+          <ScalarProperty Name="Ans_Id" ColumnName="Ans_Id" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Sub_Id" ColumnName="Sub_Id" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_Customers">
+      <EntityTypeMapping TypeName="AssessmentservayModel.M_Customers">
+        <MappingFragment StoreEntitySet="M_Customers">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_Subject">
+      <EntityTypeMapping TypeName="AssessmentservayModel.M_Subject">
+        <MappingFragment StoreEntitySet="M_Subject">
+          <ScalarProperty Name="Sub_Id" ColumnName="Sub_Id" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AssessmentservayModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Question">
+      <EntityTypeMapping TypeName="AssessmentservayModel.T_Question">
+        <MappingFragment StoreEntitySet="T_Question">
+          <ScalarProperty Name="TQ_Id" ColumnName="TQ_Id" />
+          <ScalarProperty Name="Name_Subj" ColumnName="Name_Subj" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QuestionDetail">
+      <EntityTypeMapping TypeName="AssessmentservayModel.T_QuestionDetail">
+        <MappingFragment StoreEntitySet="T_QuestionDetail">
+          <ScalarProperty Name="TQD_Id" ColumnName="TQD_Id" />
+          <ScalarProperty Name="TQ_Id" ColumnName="TQ_Id" />
+          <ScalarProperty Name="Sub_Id" ColumnName="Sub_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Questionservay">
+      <EntityTypeMapping TypeName="AssessmentservayModel.T_Questionservay">
+        <MappingFragment StoreEntitySet="T_Questionservay">
+          <ScalarProperty Name="TQS_Id" ColumnName="TQS_Id" />
+          <ScalarProperty Name="TQ_Id" ColumnName="TQ_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Sub_Id" ColumnName="Sub_Id" />
+          <ScalarProperty Name="Ans_Id" ColumnName="Ans_Id" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

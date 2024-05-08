@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AssessmentservayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="M_Answer">
+    <Key>
+      <PropertyRef Name="Ans_Id" />
+    </Key>
+    <Property Name="Ans_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Sub_Id" Type="int" Nullable="false" />
+    <Property Name="Sequence" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="M_Customers">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="100" />
+    <Property Name="LastName" Type="nchar" MaxLength="200" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="E_mail" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="M_Subject">
+    <Key>
+      <PropertyRef Name="Sub_Id" />
+    </Key>
+    <Property Name="Sub_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sequence" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="T_Question">
+    <Key>
+      <PropertyRef Name="TQ_Id" />
+    </Key>
+    <Property Name="TQ_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Subj" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Createdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_QuestionDetail">
+    <Key>
+      <PropertyRef Name="TQD_Id" />
+    </Key>
+    <Property Name="TQD_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TQ_Id" Type="int" Nullable="false" />
+    <Property Name="Sub_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Questionservay">
+    <Key>
+      <PropertyRef Name="TQS_Id" />
+    </Key>
+    <Property Name="TQS_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TQ_Id" Type="int" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Sub_Id" Type="int" Nullable="false" />
+    <Property Name="Ans_Id" Type="int" Nullable="false" />
+    <Property Name="Other" Type="nchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK_M_Answer_M_Subject">
+    <End Role="M_Subject" Type="Self.M_Subject" Multiplicity="1" />
+    <End Role="M_Answer" Type="Self.M_Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_Subject">
+        <PropertyRef Name="Sub_Id" />
+      </Principal>
+      <Dependent Role="M_Answer">
+        <PropertyRef Name="Sub_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_QuestionDetail_M_Subject">
+    <End Role="M_Subject" Type="Self.M_Subject" Multiplicity="1" />
+    <End Role="T_QuestionDetail" Type="Self.T_QuestionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_Subject">
+        <PropertyRef Name="Sub_Id" />
+      </Principal>
+      <Dependent Role="T_QuestionDetail">
+        <PropertyRef Name="Sub_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_QuestionDetail_T_Question">
+    <End Role="T_Question" Type="Self.T_Question" Multiplicity="1" />
+    <End Role="T_QuestionDetail" Type="Self.T_QuestionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Question">
+        <PropertyRef Name="TQ_Id" />
+      </Principal>
+      <Dependent Role="T_QuestionDetail">
+        <PropertyRef Name="TQ_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Questionservay_M_Answer">
+    <End Role="M_Answer" Type="Self.M_Answer" Multiplicity="1" />
+    <End Role="T_Questionservay" Type="Self.T_Questionservay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_Answer">
+        <PropertyRef Name="Ans_Id" />
+      </Principal>
+      <Dependent Role="T_Questionservay">
+        <PropertyRef Name="Ans_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Questionservay_M_Subject">
+    <End Role="M_Subject" Type="Self.M_Subject" Multiplicity="1" />
+    <End Role="T_Questionservay" Type="Self.T_Questionservay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_Subject">
+        <PropertyRef Name="Sub_Id" />
+      </Principal>
+      <Dependent Role="T_Questionservay">
+        <PropertyRef Name="Sub_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Questionservay_T_Question1">
+    <End Role="T_Question" Type="Self.T_Question" Multiplicity="1" />
+    <End Role="T_Questionservay" Type="Self.T_Questionservay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Question">
+        <PropertyRef Name="TQ_Id" />
+      </Principal>
+      <Dependent Role="T_Questionservay">
+        <PropertyRef Name="TQ_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AssessmentservayModelStoreContainer">
+    <EntitySet Name="M_Answer" EntityType="Self.M_Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_Customers" EntityType="Self.M_Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_Subject" EntityType="Self.M_Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Question" EntityType="Self.T_Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_QuestionDetail" EntityType="Self.T_QuestionDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Questionservay" EntityType="Self.T_Questionservay" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_M_Answer_M_Subject" Association="Self.FK_M_Answer_M_Subject">
+      <End Role="M_Subject" EntitySet="M_Subject" />
+      <End Role="M_Answer" EntitySet="M_Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_QuestionDetail_M_Subject" Association="Self.FK_T_QuestionDetail_M_Subject">
+      <End Role="M_Subject" EntitySet="M_Subject" />
+      <End Role="T_QuestionDetail" EntitySet="T_QuestionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_QuestionDetail_T_Question" Association="Self.FK_T_QuestionDetail_T_Question">
+      <End Role="T_Question" EntitySet="T_Question" />
+      <End Role="T_QuestionDetail" EntitySet="T_QuestionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Questionservay_M_Answer" Association="Self.FK_T_Questionservay_M_Answer">
+      <End Role="M_Answer" EntitySet="M_Answer" />
+      <End Role="T_Questionservay" EntitySet="T_Questionservay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Questionservay_M_Subject" Association="Self.FK_T_Questionservay_M_Subject">
+      <End Role="M_Subject" EntitySet="M_Subject" />
+      <End Role="T_Questionservay" EntitySet="T_Questionservay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Questionservay_T_Question1" Association="Self.FK_T_Questionservay_T_Question1">
+      <End Role="T_Question" EntitySet="T_Question" />
+      <End Role="T_Questionservay" EntitySet="T_Questionservay" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
