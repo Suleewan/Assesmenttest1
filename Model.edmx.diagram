@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ffa5a5963d084f00a23602c271ebc6a0" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="AssessmentservayModel.M_Answer" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssessmentservayModel.M_Customers" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssessmentservayModel.M_Subject" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssessmentservayModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssessmentservayModel.T_Question" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssessmentservayModel.T_QuestionDetail" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssessmentservayModel.T_Questionservay" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="AssessmentservayModel.FK_M_Answer_M_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="AssessmentservayModel.FK_T_Questionservay_M_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="AssessmentservayModel.FK_T_Questionservay_M_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="AssessmentservayModel.FK_T_QuestionDetail_M_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="AssessmentservayModel.FK_T_Questionservay_M_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="AssessmentservayModel.FK_T_QuestionDetail_T_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="AssessmentservayModel.FK_T_Questionservay_T_Question" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
